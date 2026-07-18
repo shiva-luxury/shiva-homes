@@ -17,6 +17,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
     description: `${n.name} homes for sale, market stats, schools, and lifestyle guide from ${AGENT_NAME}, ${BROKERAGE}.`,
     alternates: { canonical: `/neighborhoods/${n.slug}` },
     openGraph: { title: `${n.name} Real Estate Guide`, description: n.lifestyle, url: `${SITE_URL}/neighborhoods/${n.slug}` },
+    twitter: { card: 'summary_large_image', title: `${n.name} Real Estate Guide`, description: n.lifestyle },
   }
 }
 

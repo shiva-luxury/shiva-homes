@@ -3,10 +3,15 @@ import Link from 'next/link'
 import { Card, Placeholder } from '../../components/ui'
 import { BLOG_POSTS } from '../../lib/blog'
 
+const BLOG_INDEX_TITLE = 'Blog — LA Real Estate Insights'
+const BLOG_INDEX_DESCRIPTION = 'Buying, selling, and neighborhood guides for Los Angeles real estate from Shiva Nelson, Rise Real Estate Group.'
+
 export const metadata: Metadata = {
-  title: 'Blog — LA Real Estate Insights',
-  description: 'Buying, selling, and neighborhood guides for Los Angeles real estate from Shiva Nelson, Rise Real Estate Group.',
+  title: BLOG_INDEX_TITLE,
+  description: BLOG_INDEX_DESCRIPTION,
   alternates: { canonical: '/blog' },
+  openGraph: { title: BLOG_INDEX_TITLE, description: BLOG_INDEX_DESCRIPTION },
+  twitter: { card: 'summary_large_image', title: BLOG_INDEX_TITLE, description: BLOG_INDEX_DESCRIPTION },
 }
 
 export default function BlogIndexPage() {

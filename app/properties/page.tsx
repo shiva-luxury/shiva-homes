@@ -2,10 +2,15 @@ import type { Metadata } from 'next'
 import { Card, Placeholder, Button } from '../../components/ui'
 import { FEATURED_PROPERTIES } from '../../lib/properties'
 
+const PROPERTIES_TITLE = 'All Properties'
+const PROPERTIES_DESCRIPTION = 'Browse current listings across Los Angeles with Shiva Nelson, Rise Real Estate Group.'
+
 export const metadata: Metadata = {
-  title: 'All Properties',
-  description: 'Browse current listings across Los Angeles with Shiva Nelson, Rise Real Estate Group.',
+  title: PROPERTIES_TITLE,
+  description: PROPERTIES_DESCRIPTION,
   alternates: { canonical: '/properties' },
+  openGraph: { title: PROPERTIES_TITLE, description: PROPERTIES_DESCRIPTION },
+  twitter: { card: 'summary_large_image', title: PROPERTIES_TITLE, description: PROPERTIES_DESCRIPTION },
 }
 
 export default function PropertiesPage() {

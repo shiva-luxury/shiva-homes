@@ -3,10 +3,15 @@ import { Placeholder, Button } from '../../components/ui'
 import LeadFormLink from '../../components/LeadFormLink'
 import { AGENT_NAME, BROKERAGE, DRE, PHONE, EMAIL } from '../../lib/constants'
 
+const ABOUT_TITLE = 'About Shiva Nelson'
+const ABOUT_DESCRIPTION = `Meet ${AGENT_NAME}, Principal Advisor with ${BROKERAGE}, ${DRE}, serving Los Angeles buyers, sellers, and renters.`
+
 export const metadata: Metadata = {
-  title: 'About Shiva Nelson',
-  description: `Meet ${AGENT_NAME}, Principal Advisor with ${BROKERAGE}, ${DRE}, serving Los Angeles buyers, sellers, and renters.`,
+  title: ABOUT_TITLE,
+  description: ABOUT_DESCRIPTION,
   alternates: { canonical: '/about' },
+  openGraph: { title: ABOUT_TITLE, description: ABOUT_DESCRIPTION },
+  twitter: { card: 'summary_large_image', title: ABOUT_TITLE, description: ABOUT_DESCRIPTION },
 }
 
 export default function AboutPage() {

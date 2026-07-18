@@ -19,6 +19,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
     description: post.metaDescription,
     alternates: { canonical: `/blog/${post.slug}` },
     openGraph: { title: post.metaTitle, description: post.metaDescription, url: `${SITE_URL}/blog/${post.slug}`, type: 'article', publishedTime: post.date },
+    twitter: { card: 'summary_large_image', title: post.metaTitle, description: post.metaDescription },
   }
 }
 

@@ -1,6 +1,13 @@
 import Anthropic from '@anthropic-ai/sdk'
 import { NextResponse } from 'next/server'
 
+// Without this, Next.js statically prerenders this route once at build time
+// (no dynamic inputs are used) and Vercel's CDN serves that frozen response
+// forever — the "auto-refreshes daily" behavior depends on this route
+// actually re-executing per request; the 24h cadence itself is enforced by
+// the client-side cache in components/MarketStatsBar.tsx.
+export const dynamic = 'force-dynamic'
+
 const FALLBACK = {
   medianPrice: '$1.02M',
   daysOnMarket: '38',
