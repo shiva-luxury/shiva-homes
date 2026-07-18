@@ -1,21 +1,25 @@
 import Link from 'next/link'
-import { Placeholder, Button } from './ui'
-import { AGENT_NAME, BROKERAGE, DRE } from './../lib/constants'
+import { Button } from './ui'
+import { BRAND, BROKERAGE, DRE } from './../lib/constants'
+import { PORTRAIT_PHOTO_URL } from '../lib/images'
 
 export default function AboutSection() {
   return (
     <section id="about" className="section-pad max-w-7xl mx-auto px-6">
       <div className="grid lg:grid-cols-2 gap-12 items-center">
-        <Placeholder label={`${AGENT_NAME} — portrait photo`} aspect="aspect-[4/5]" />
+        <div className="relative overflow-hidden rounded-lg aspect-[4/5]">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={PORTRAIT_PHOTO_URL} alt={`${BRAND} portrait`} className="w-full h-full object-cover" />
+        </div>
 
         <div>
-          <p className="text-xs font-semibold tracking-[0.2em] uppercase text-gold-dark mb-3">About Shiva</p>
+          <p className="text-xs font-semibold tracking-[0.2em] uppercase text-gold-dark mb-3">About {BRAND}</p>
           <h2 className="font-serif text-3xl sm:text-4xl text-navy mb-5">Your California Real Estate Expert</h2>
           <p className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed mb-4">
-            As a Principal Advisor with {BROKERAGE}, {AGENT_NAME} brings a sophisticated, design-forward approach to the Los Angeles market. With a background in art and design, she identifies the aesthetic potential and long-term value in a property that others often overlook — pairing that eye with sharp, data-driven market strategy.
+            As a Principal Advisor with {BROKERAGE}, {BRAND} brings a sophisticated, design-forward approach to the Los Angeles market. With a background in art and design, the team identifies the aesthetic potential and long-term value in a property that others often overlook — pairing that eye with sharp, data-driven market strategy.
           </p>
           <p className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed mb-6">
-            Multilingual and client-first, {AGENT_NAME} offers a bespoke experience across Los Angeles's most sought-after neighborhoods — from Encino and Sherman Oaks to Malibu, Venice, Santa Monica, Beverly Hills, Calabasas, and Woodland Hills — ensuring every buying, selling, or renting journey is as strategically sound as it is well cared for.
+            Multilingual and client-first, {BRAND} offers a bespoke experience across Los Angeles's most sought-after neighborhoods — from Encino and Sherman Oaks to Malibu, Venice, Santa Monica, Beverly Hills, Calabasas, and Woodland Hills — ensuring every buying, selling, or renting journey is as strategically sound as it is well cared for.
           </p>
 
           <div className="grid grid-cols-2 gap-4 mb-8 text-sm">

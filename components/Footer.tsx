@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { AGENT_NAME, BROKERAGE, DRE, PHONE, EMAIL, SOCIAL, TAGLINE } from '../lib/constants'
+import { AGENT_NAME, BRAND, BROKERAGE, DRE, PHONE, EMAIL, SOCIAL, TAGLINE } from '../lib/constants'
 
 export default function Footer() {
   return (
@@ -21,6 +21,7 @@ export default function Footer() {
             <li><Link href="/#rent" className="hover:text-gold-light">Rent</Link></li>
             <li><Link href="/#neighborhoods" className="hover:text-gold-light">Neighborhoods</Link></li>
             <li><Link href="/blog" className="hover:text-gold-light">Blog</Link></li>
+            <li><Link href="/newsletter" className="hover:text-gold-light">Newsletter</Link></li>
             <li><Link href="/#watch" className="hover:text-gold-light">Watch</Link></li>
           </ul>
         </div>
@@ -38,7 +39,7 @@ export default function Footer() {
         <div>
           <p className="text-white text-sm font-semibold mb-3 uppercase tracking-wide">Contact</p>
           <ul className="space-y-2 text-sm">
-            <li>{AGENT_NAME}</li>
+            <li>{BRAND}</li>
             <li>{BROKERAGE}</li>
             <li>{DRE}</li>
             <li><a href={`tel:${PHONE.replace(/\D/g, '')}`} className="hover:text-gold-light">{PHONE}</a></li>
@@ -49,9 +50,9 @@ export default function Footer() {
 
       <div className="border-t border-white/10 py-6 px-6">
         <p className="max-w-7xl mx-auto text-xs text-white/40 leading-relaxed">
-          {AGENT_NAME} is a licensed real estate agent ({DRE}) with {BROKERAGE}, Los Angeles, California. All information provided is deemed reliable but is not guaranteed and should be independently verified. Equal Housing Opportunity. This is not intended as a solicitation if your property is already listed with another broker.
+          Licensed by {AGENT_NAME} | {DRE} | {BROKERAGE}. All information provided is deemed reliable but is not guaranteed and should be independently verified. Equal Housing Opportunity. This is not intended as a solicitation if your property is already listed with another broker.
         </p>
-        <p className="max-w-7xl mx-auto text-xs text-white/40 mt-3">© Shiva Luxury 2025. All rights reserved.</p>
+        <p className="max-w-7xl mx-auto text-xs text-white/40 mt-3">© {BRAND} 2025. All rights reserved.</p>
       </div>
     </footer>
   )

@@ -1,6 +1,7 @@
 import Link from 'next/link'
-import { Card, Placeholder, SectionTitle, Button } from './ui'
+import { Card, UnsplashPhoto, SectionTitle, Button } from './ui'
 import { NEIGHBORHOODS } from '../lib/neighborhoods'
+import { NEIGHBORHOOD_IMAGES } from '../lib/images'
 
 export default function NeighborhoodGuides() {
   return (
@@ -11,7 +12,7 @@ export default function NeighborhoodGuides() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {NEIGHBORHOODS.map((n) => (
             <Card key={n.slug} className="overflow-hidden">
-              <Placeholder label={`${n.name} — photo`} aspect="aspect-[4/3]" className="rounded-none" />
+              <UnsplashPhoto img={NEIGHBORHOOD_IMAGES[n.slug]} w={600} h={450} aspect="aspect-[4/3]" className="rounded-none rounded-t-xl" />
               <div className="p-4">
                 <p className="font-serif text-lg text-navy">{n.name}</p>
                 <p className="text-xs text-gold-dark font-semibold mb-2">Median {n.medianPrice}</p>

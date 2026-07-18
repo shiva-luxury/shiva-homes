@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { PHONE, PHONE_RAW } from '../lib/constants'
+import { PORTRAIT_PHOTO_URL } from '../lib/images'
 import LeadFormModal from './LeadFormModal'
 
 const NAV = [
@@ -11,6 +12,7 @@ const NAV = [
   { label: 'Rent', href: '/#rent' },
   { label: 'Neighborhoods', href: '/#neighborhoods' },
   { label: 'Blog', href: '/blog' },
+  { label: 'Newsletter', href: '/newsletter' },
   { label: 'Watch', href: '/#watch' },
   { label: 'About', href: '/#about' },
   { label: 'Contact', href: '/#buy' },
@@ -36,7 +38,8 @@ export default function Header() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
-            <span className="w-9 h-9 rounded-full border border-gold flex items-center justify-center text-gold font-serif text-sm">SL</span>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={PORTRAIT_PHOTO_URL} alt="Shiva Luxury" className="w-9 h-9 rounded-full object-cover border border-gold" />
             <span className="font-serif text-white text-lg tracking-wide hidden sm:inline">Shiva Luxury</span>
           </Link>
 

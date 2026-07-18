@@ -1,6 +1,7 @@
 import Link from 'next/link'
-import { Card, Placeholder, SectionTitle, Button } from './ui'
+import { Card, UnsplashPhoto, SectionTitle, Button } from './ui'
 import { BLOG_POSTS } from '../lib/blog'
+import { BLOG_IMAGES } from '../lib/images'
 
 export default function BlogSection() {
   const latest = BLOG_POSTS.slice(-6).reverse()
@@ -12,7 +13,7 @@ export default function BlogSection() {
         {latest.map((post) => (
           <Link key={post.slug} href={`/blog/${post.slug}`}>
             <Card className="overflow-hidden h-full hover:shadow-lg transition-shadow">
-              <Placeholder label={post.keyword} aspect="aspect-[16/10]" className="rounded-none" />
+              <UnsplashPhoto img={BLOG_IMAGES[post.slug]} w={600} h={375} aspect="aspect-[16/10]" className="rounded-none rounded-t-xl" />
               <div className="p-5">
                 <p className="text-xs text-gold-dark font-semibold uppercase tracking-wide mb-2">{new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</p>
                 <p className="font-serif text-lg text-navy leading-snug mb-2">{post.title}</p>

@@ -3,33 +3,50 @@ import { Playfair_Display, Inter } from 'next/font/google'
 import './globals.css'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import ExitPopup from '../components/ExitPopup'
-import { SITE_URL, BRAND, AGENT_NAME, DRE } from '../lib/constants'
+import NewsletterPopup from '../components/NewsletterPopup'
+import { SITE_URL, BRAND, DRE } from '../lib/constants'
 
 const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-playfair', weight: ['500', '600', '700'] })
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', weight: ['300', '400', '500', '600'] })
 
+const HOME_TITLE = `${BRAND} — California Real Estate Expert`
+const HOME_DESCRIPTION = `Award-winning California real estate brand ${BRAND} specializes in luxury homes, buyers, sellers, and investors across Los Angeles, Encino, Malibu, Venice, and Santa Monica. ${DRE}.`
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `California Real Estate, Done Right | ${BRAND}`,
+    default: HOME_TITLE,
     template: `%s | ${BRAND}`,
   },
-  description: `Buying, selling, or renting in Los Angeles — ${AGENT_NAME} knows this market inside out. ${DRE}, Rise Real Estate Group.`,
+  description: HOME_DESCRIPTION,
+  keywords: [
+    'California real estate agent',
+    'luxury homes Los Angeles',
+    'Encino real estate',
+    'Sherman Oaks homes for sale',
+    'Malibu luxury real estate',
+    'Venice Beach real estate agent',
+    'Santa Monica homes',
+    'Beverly Hills real estate',
+  ],
   openGraph: {
     type: 'website',
     siteName: BRAND,
-    title: `California Real Estate, Done Right | ${BRAND}`,
-    description: `Buying, selling, or renting in Los Angeles — ${AGENT_NAME} knows this market inside out.`,
+    title: HOME_TITLE,
+    description: HOME_DESCRIPTION,
     url: SITE_URL,
   },
   twitter: {
     card: 'summary_large_image',
-    title: `California Real Estate, Done Right | ${BRAND}`,
-    description: `Buying, selling, or renting in Los Angeles — ${AGENT_NAME} knows this market inside out.`,
+    title: HOME_TITLE,
+    description: HOME_DESCRIPTION,
   },
   alternates: { canonical: '/' },
   robots: { index: true, follow: true },
+  verification: {
+    // REPLACE WITH YOUR GOOGLE SEARCH CONSOLE VERIFICATION CODE
+    google: 'REPLACE_WITH_GSC_VERIFICATION_CODE',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -39,7 +56,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         {children}
         <Footer />
-        <ExitPopup />
+        <NewsletterPopup />
       </body>
     </html>
   )

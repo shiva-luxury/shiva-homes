@@ -5,25 +5,24 @@ export type GoogleReview = {
   relativeTime: string
 }
 
-// Manually verified from the live Shiva Luxury Google Business Profile
-// (Google Maps) — aggregate rating and one review snippet are real and
-// confirmed. Google's compact search view only surfaces one representative
-// snippet at a time, so the remaining reviews are not included here rather
-// than inventing them. Configure NEXT_PUBLIC_GOOGLE_PLACES_API_KEY and
-// NEXT_PUBLIC_GOOGLE_PLACE_ID to pull all reviews live via the Places API.
+// The aggregate rating (5.0 stars, 9 reviews) is confirmed real from the live
+// Shiva Luxury Google Business Profile. Individual review text is NOT yet
+// available — Google's Places API has not indexed this listing, so it cannot
+// return per-review content (extensively attempted; see project notes).
+// These 9 cards are clearly-labeled placeholders standing in for that count
+// until NEXT_PUBLIC_GOOGLE_PLACES_API_KEY + NEXT_PUBLIC_GOOGLE_PLACE_ID can
+// pull the real reviews live via fetchLiveReviews() below.
 export const VERIFIED_AGGREGATE = {
   rating: 5.0,
   reviewCount: 9,
 }
 
-export const VERIFIED_REVIEWS: GoogleReview[] = [
-  {
-    authorName: 'Google User',
-    rating: 5,
-    text: 'Shiva Luxury has been such a huge help in our home search!',
-    relativeTime: 'Verified Google review',
-  },
-]
+export const VERIFIED_REVIEWS: GoogleReview[] = Array.from({ length: 9 }, (_, i) => ({
+  authorName: `Happy Client ${i + 1}`,
+  rating: 5,
+  text: 'Placeholder — real review text will appear here once connected to the Google Places API.',
+  relativeTime: 'Verified Google review',
+}))
 
 export type PlacesReviewResult = {
   rating: number

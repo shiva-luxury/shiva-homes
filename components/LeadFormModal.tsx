@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { Input, Select, Textarea, Label, CheckboxGroup, Button } from './ui'
 import { submitLead, TCPA_CONSENT, LeadSource } from '../lib/webhook'
-import { AGENT_NAME } from '../lib/constants'
+import { BRAND } from '../lib/constants'
 
 export type LeadType = 'buy' | 'sell' | 'rent'
 
@@ -117,7 +117,7 @@ export default function LeadFormModal({ type, onClose }: { type: LeadType; onClo
             <div className="w-14 h-14 rounded-full bg-green-100 text-green-600 flex items-center justify-center mx-auto mb-4 text-2xl">✓</div>
             <h3 className="font-serif text-2xl text-navy mb-2">Thank You!</h3>
             <p className="text-sm text-[var(--text-secondary)]">
-              {AGENT_NAME} has received your request and will be in touch shortly.
+              {BRAND} has received your request and will be in touch shortly.
             </p>
             <Button variant="primary" onClick={onClose} className="mt-6">Close</Button>
           </div>
@@ -220,7 +220,7 @@ export default function LeadFormModal({ type, onClose }: { type: LeadType; onClo
 
             {error && <p className="text-sm text-red-600 mb-3">{error}</p>}
 
-            <p className="text-[11px] leading-relaxed text-[var(--text-muted)] mb-4">{TCPA_CONSENT(AGENT_NAME)}</p>
+            <p className="text-[11px] leading-relaxed text-[var(--text-muted)] mb-4">{TCPA_CONSENT(BRAND)}</p>
 
             <Button type="submit" variant="gold" size="lg" className="w-full" disabled={submitting}>
               {submitting ? 'Sending…' : meta.cta}

@@ -4,7 +4,7 @@ import { BLOG_POSTS } from '../lib/blog'
 import { NEIGHBORHOODS } from '../lib/neighborhoods'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes = ['', '/properties', '/blog', '/about'].map((path) => ({
+  const staticRoutes = ['', '/properties', '/blog', '/about', '/newsletter'].map((path) => ({
     url: `${SITE_URL}${path}`,
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,

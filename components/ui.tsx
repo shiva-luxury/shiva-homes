@@ -48,6 +48,48 @@ export function Placeholder({ label, aspect = 'aspect-[4/3]', className = '' }: 
   return <div className={`placeholder-media rounded-lg ${aspect} ${className}`}>{label}</div>
 }
 
+/** Labeled placeholder for real media the site owner still needs to add — sized exactly, never silently blank. */
+export function AddMediaPlaceholder({ label, width, height, className = '' }: { label: string; width: number; height: number; className?: string }) {
+  return (
+    <div
+      className={`placeholder-media rounded-lg border-2 border-dashed border-gold ${className}`}
+      style={{ width, height, maxWidth: '100%' }}
+    >
+      {label}
+    </div>
+  )
+}
+
+export function UnsplashPhoto({
+  img, w, h, aspect = 'aspect-[4/3]', className = '', creditPosition = 'bottom-right',
+}: {
+  img: { id: string; alt: string; photographer: string; photographerUsername: string }
+  w: number
+  h?: number
+  aspect?: string
+  className?: string
+  creditPosition?: 'bottom-right' | 'bottom-left'
+}) {
+  const src = `https://images.unsplash.com/${img.id}?auto=format&fit=crop&w=${w}${h ? `&h=${h}` : ''}&q=80`
+  const creditHref = `https://unsplash.com/@${img.photographerUsername}?utm_source=shiva_luxury&utm_medium=referral`
+  return (
+    <div className={`relative overflow-hidden rounded-lg ${aspect} ${className}`}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={src} alt={img.alt} loading="lazy" className="w-full h-full object-cover" />
+      {/* span, not <a> — this component can render inside a Link/<a> (e.g. blog cards), and nested anchors are invalid HTML */}
+      <span
+        role="link"
+        tabIndex={0}
+        onClick={(e) => { e.preventDefault(); e.stopPropagation(); window.open(creditHref, '_blank', 'noopener,noreferrer') }}
+        onKeyDown={(e) => { if (e.key === 'Enter') { e.stopPropagation(); window.open(creditHref, '_blank', 'noopener,noreferrer') } }}
+        className={`absolute ${creditPosition === 'bottom-right' ? 'bottom-1.5 right-2' : 'bottom-1.5 left-2'} text-[10px] text-white/80 bg-black/40 px-1.5 py-0.5 rounded backdrop-blur-sm hover:text-white cursor-pointer`}
+      >
+        Photo: {img.photographer} / Unsplash
+      </span>
+    </div>
+  )
+}
+
 export function Input(props: React.InputHTMLAttributes<HTMLInputElement>) {
   return (
     <input

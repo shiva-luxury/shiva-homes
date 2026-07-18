@@ -2,9 +2,10 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { BLOG_POSTS, getPost } from '../../../lib/blog'
-import { Placeholder, Button } from '../../../components/ui'
+import { UnsplashPhoto, Button } from '../../../components/ui'
 import LeadFormLink from '../../../components/LeadFormLink'
-import { AGENT_NAME, BROKERAGE, DRE, SITE_URL } from '../../../lib/constants'
+import { BRAND, BROKERAGE, DRE, SITE_URL } from '../../../lib/constants'
+import { BLOG_IMAGES } from '../../../lib/images'
 
 export function generateStaticParams() {
   return BLOG_POSTS.map((p) => ({ slug: p.slug }))
@@ -34,7 +35,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
     description: post.metaDescription,
     datePublished: post.date,
     dateModified: post.date,
-    author: { '@type': 'Person', name: AGENT_NAME },
+    author: { '@type': 'Organization', name: BRAND },
     publisher: { '@type': 'Organization', name: BROKERAGE },
     mainEntityOfPage: `${SITE_URL}/blog/${post.slug}`,
   }
@@ -48,7 +49,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           {new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
         </p>
         <h1 className="font-serif text-3xl sm:text-4xl text-navy mb-6 leading-tight">{post.title}</h1>
-        <Placeholder label={post.keyword} aspect="aspect-[16/9]" className="mb-8" />
+        <UnsplashPhoto img={BLOG_IMAGES[post.slug]} w={1200} h={630} aspect="aspect-[16/9]" className="mb-8" />
 
         <article className="prose-none space-y-5">
           {post.body.map((para, i) => (
@@ -66,7 +67,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
 
         <div className="mt-12 bg-[var(--surface)] rounded-xl p-8 text-center">
           <p className="font-serif text-xl text-navy mb-2">Ready to talk it through?</p>
-          <p className="text-sm text-[var(--text-secondary)] mb-5">{AGENT_NAME} · {BROKERAGE} · {DRE}</p>
+          <p className="text-sm text-[var(--text-secondary)] mb-5">{BRAND} · {BROKERAGE} · {DRE}</p>
           <LeadFormLink type="buy">
             <Button variant="primary" size="lg">Contact Shiva</Button>
           </LeadFormLink>

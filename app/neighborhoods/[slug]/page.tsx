@@ -1,9 +1,10 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { NEIGHBORHOODS, getNeighborhood } from '../../../lib/neighborhoods'
-import { Card, Placeholder, Button } from '../../../components/ui'
+import { Card, UnsplashPhoto, Button } from '../../../components/ui'
 import LeadFormLink from '../../../components/LeadFormLink'
-import { AGENT_NAME, BROKERAGE, DRE, SITE_URL } from '../../../lib/constants'
+import { BRAND, BROKERAGE, DRE, SITE_URL } from '../../../lib/constants'
+import { NEIGHBORHOOD_IMAGES } from '../../../lib/images'
 
 export function generateStaticParams() {
   return NEIGHBORHOODS.map((n) => ({ slug: n.slug }))
@@ -14,7 +15,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   if (!n) return {}
   return {
     title: `${n.name} Real Estate Guide`,
-    description: `${n.name} homes for sale, market stats, schools, and lifestyle guide from ${AGENT_NAME}, ${BROKERAGE}.`,
+    description: `${n.name} homes for sale, market stats, schools, and lifestyle guide from ${BRAND}, ${BROKERAGE}.`,
     alternates: { canonical: `/neighborhoods/${n.slug}` },
     openGraph: { title: `${n.name} Real Estate Guide`, description: n.lifestyle, url: `${SITE_URL}/neighborhoods/${n.slug}` },
     twitter: { card: 'summary_large_image', title: `${n.name} Real Estate Guide`, description: n.lifestyle },
@@ -39,7 +40,7 @@ export default function NeighborhoodPage({ params }: { params: { slug: string } 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 
       <div className="relative">
-        <Placeholder label={`${n.name} — hero photo`} aspect="h-[50vh]" className="rounded-none" />
+        <UnsplashPhoto img={NEIGHBORHOOD_IMAGES[n.slug]} w={1600} h={800} aspect="h-[50vh]" className="rounded-none" creditPosition="bottom-left" />
         <div className="absolute inset-0 bg-navy/50 flex items-end">
           <div className="max-w-7xl mx-auto px-6 pb-10 w-full">
             <h1 className="font-serif text-4xl sm:text-5xl text-white mb-2">{n.name}</h1>
@@ -85,7 +86,7 @@ export default function NeighborhoodPage({ params }: { params: { slug: string } 
               <div className="flex justify-between"><dt className="text-[var(--text-secondary)]">Avg. Days on Market</dt><dd className="font-medium text-navy">{n.daysOnMarket}</dd></div>
             </dl>
             <LeadFormLink type="buy">
-              <Button variant="primary" className="w-full">Ask {AGENT_NAME} About {n.name}</Button>
+              <Button variant="primary" className="w-full">Ask {BRAND} About {n.name}</Button>
             </LeadFormLink>
             <p className="text-[11px] text-[var(--text-muted)] mt-3 text-center">{DRE} · {BROKERAGE}</p>
           </Card>

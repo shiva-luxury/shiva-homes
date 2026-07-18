@@ -1,10 +1,11 @@
 import type { Metadata } from 'next'
-import { Placeholder, Button } from '../../components/ui'
+import { Button } from '../../components/ui'
 import LeadFormLink from '../../components/LeadFormLink'
-import { AGENT_NAME, BROKERAGE, DRE, PHONE, EMAIL } from '../../lib/constants'
+import { BRAND, BROKERAGE, DRE, PHONE, EMAIL } from '../../lib/constants'
+import { PORTRAIT_PHOTO_URL } from '../../lib/images'
 
-const ABOUT_TITLE = 'About Shiva Nelson'
-const ABOUT_DESCRIPTION = `Meet ${AGENT_NAME}, Principal Advisor with ${BROKERAGE}, ${DRE}, serving Los Angeles buyers, sellers, and renters.`
+const ABOUT_TITLE = `About ${BRAND}`
+const ABOUT_DESCRIPTION = `Meet ${BRAND}, Principal Advisor with ${BROKERAGE}, ${DRE}, serving Los Angeles buyers, sellers, and renters.`
 
 export const metadata: Metadata = {
   title: ABOUT_TITLE,
@@ -18,22 +19,25 @@ export default function AboutPage() {
   return (
     <main className="bg-white">
       <div className="bg-navy py-16 text-center">
-        <h1 className="font-serif text-4xl text-white mb-2">Meet {AGENT_NAME}</h1>
+        <h1 className="font-serif text-4xl text-white mb-2">Meet {BRAND}</h1>
         <p className="text-white/70">Your California Real Estate Expert</p>
       </div>
 
       <div className="max-w-4xl mx-auto px-6 py-14">
-        <Placeholder label={`${AGENT_NAME} — portrait photo`} aspect="aspect-[16/9]" className="mb-10" />
+        <div className="relative overflow-hidden rounded-lg aspect-[16/9] mb-10">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={PORTRAIT_PHOTO_URL} alt={`${BRAND} portrait`} className="w-full h-full object-cover" />
+        </div>
 
         <div className="space-y-5 text-[15px] leading-relaxed text-[var(--text-secondary)]">
           <p>
-            As a Principal Advisor with {BROKERAGE}, {AGENT_NAME} provides a sophisticated, design-forward approach to the Los Angeles real estate market. With a background in art and design, she identifies the aesthetic potential and long-term value in a property that others often overlook, pairing that eye with sharp, data-driven market strategy.
+            As a Principal Advisor with {BROKERAGE}, {BRAND} provides a sophisticated, design-forward approach to the Los Angeles real estate market. With a background in art and design, the team identifies the aesthetic potential and long-term value in a property that others often overlook, pairing that eye with sharp, data-driven market strategy.
           </p>
           <p>
-            Multilingual and client-first, {AGENT_NAME} offers a bespoke experience tailored to buyers, sellers, and renters across Los Angeles's most sought-after neighborhoods — from Encino and Sherman Oaks to Malibu, Venice, Santa Monica, Beverly Hills, Calabasas, and Woodland Hills — ensuring every transaction is as strategically sound as it is well cared for.
+            Multilingual and client-first, {BRAND} offers a bespoke experience tailored to buyers, sellers, and renters across Los Angeles's most sought-after neighborhoods — from Encino and Sherman Oaks to Malibu, Venice, Santa Monica, Beverly Hills, Calabasas, and Woodland Hills — ensuring every transaction is as strategically sound as it is well cared for.
           </p>
           <p>
-            Whether you're buying your first home, selling a longtime family property, or searching for the right rental, {AGENT_NAME} brings the same level of care, transparency, and market fluency to every client relationship — treating each transaction as the start of a long-term relationship, not a one-time deal.
+            Whether you're buying your first home, selling a longtime family property, or searching for the right rental, {BRAND} brings the same level of care, transparency, and market fluency to every client relationship — treating each transaction as the start of a long-term relationship, not a one-time deal.
           </p>
         </div>
 

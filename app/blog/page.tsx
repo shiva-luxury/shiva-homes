@@ -1,10 +1,12 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { Card, Placeholder } from '../../components/ui'
+import { Card, UnsplashPhoto } from '../../components/ui'
 import { BLOG_POSTS } from '../../lib/blog'
+import { BLOG_IMAGES } from '../../lib/images'
+import { BRAND } from '../../lib/constants'
 
 const BLOG_INDEX_TITLE = 'Blog — LA Real Estate Insights'
-const BLOG_INDEX_DESCRIPTION = 'Buying, selling, and neighborhood guides for Los Angeles real estate from Shiva Nelson, Rise Real Estate Group.'
+const BLOG_INDEX_DESCRIPTION = `Buying, selling, and neighborhood guides for Los Angeles real estate from ${BRAND}, Rise Real Estate Group.`
 
 export const metadata: Metadata = {
   title: BLOG_INDEX_TITLE,
@@ -27,7 +29,7 @@ export default function BlogIndexPage() {
           {posts.map((post) => (
             <Link key={post.slug} href={`/blog/${post.slug}`}>
               <Card className="overflow-hidden h-full hover:shadow-lg transition-shadow">
-                <Placeholder label={post.keyword} aspect="aspect-[16/10]" className="rounded-none" />
+                <UnsplashPhoto img={BLOG_IMAGES[post.slug]} w={600} h={375} aspect="aspect-[16/10]" className="rounded-none rounded-t-xl" />
                 <div className="p-5">
                   <p className="text-xs text-gold-dark font-semibold uppercase tracking-wide mb-2">
                     {new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
