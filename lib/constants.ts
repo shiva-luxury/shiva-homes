@@ -10,6 +10,9 @@ export const BRAND = 'Shiva Luxury'
 export const TAGLINE = 'Engineering the Path to Exceptional Living.'
 export const SITE_URL = `https://${DOMAIN}`
 
+/** The internal content/lead-engine tool — blog posts link out to its Repurpose tab. */
+export const CONTENT_ENGINE_URL = 'https://start.shivaluxury.com'
+
 export const SOCIAL = {
   instagram: 'https://www.instagram.com/shiva.luxury',
   instagramHandle: '@shiva.luxury',

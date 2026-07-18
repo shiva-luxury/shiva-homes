@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation'
 import { BLOG_POSTS, getPost } from '../../../lib/blog'
 import { UnsplashPhoto, Button } from '../../../components/ui'
 import LeadFormLink from '../../../components/LeadFormLink'
+import GenerateSocialContentButton from '../../../components/GenerateSocialContentButton'
 import { BRAND, BROKERAGE, DRE, SITE_URL } from '../../../lib/constants'
 import { BLOG_IMAGES } from '../../../lib/images'
 
@@ -48,7 +49,10 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
         <p className="text-xs text-gold-dark font-semibold uppercase tracking-wide mb-3">
           {new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
         </p>
-        <h1 className="font-serif text-3xl sm:text-4xl text-navy mb-6 leading-tight">{post.title}</h1>
+        <h1 className="font-serif text-3xl sm:text-4xl text-navy mb-4 leading-tight">{post.title}</h1>
+        <div className="mb-6">
+          <GenerateSocialContentButton post={post} />
+        </div>
         <UnsplashPhoto img={BLOG_IMAGES[post.slug]} w={1200} h={630} aspect="aspect-[16/9]" className="mb-8" />
 
         <article className="prose-none space-y-5">
@@ -71,6 +75,10 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           <LeadFormLink type="buy">
             <Button variant="primary" size="lg">Contact Shiva</Button>
           </LeadFormLink>
+        </div>
+
+        <div className="mt-6 text-center">
+          <GenerateSocialContentButton post={post} />
         </div>
       </div>
     </main>
