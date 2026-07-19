@@ -22,7 +22,7 @@ npm run dev
 | `NEXT_PUBLIC_FUB_WEBHOOK` | **Yes** | Zapier Catch Hook URL → Follow Up Boss. POSTs simultaneously with the Sheets webhook on every form submit. |
 | `ANTHROPIC_API_KEY` | Optional | Powers the live homepage market-stats bar (median price, DOM, $/sqft) via Claude web search. Without it, the bar shows a static reference snapshot instead of a live daily pull. |
 | `NEXT_PUBLIC_YOUTUBE_API_KEY` + `NEXT_PUBLIC_YOUTUBE_CHANNEL_HANDLE` | Optional | Powers the "Watch and Learn" grid of the channel's latest 6 videos. Without it, the section shows a Subscribe-only card. |
-| `NEXT_PUBLIC_GOOGLE_PLACES_API_KEY` + `NEXT_PUBLIC_GOOGLE_PLACE_ID` | Optional | Pulls live Google reviews for the homepage trust section. Without it, the site shows 9 clearly-labeled placeholder cards + the real aggregate rating (5.0, 9 reviews) rather than fabricating review text. |
+| `NEXT_PUBLIC_GOOGLE_PLACES_API_KEY` + `NEXT_PUBLIC_GOOGLE_PLACE_ID` | Optional | Pulls live Google reviews for the homepage trust section. Set (Place ID is `ChIJJWA5sSQ0eycREcmeuqzYC7A`). Without a working key, the site falls back to placeholder cards + the real aggregate rating (5.0, 9 reviews) rather than fabricating review text. |
 
 This app does **not** use or share any webhook/API key from `start.shivaluxury.com` — every credential above is independent, even if you reuse the same Zapier Zaps.
 
@@ -36,7 +36,7 @@ The Places API key is separate from the YouTube Data API key — they are differ
 4. Click the new key, then under **API restrictions** choose **Restrict key** and select **Places API (New)** only.
 5. Under **Application restrictions**, choose **Websites** and add `homes.shivaluxury.com/*` to limit where the key can be used.
 6. Copy the key into Vercel as `NEXT_PUBLIC_GOOGLE_PLACES_API_KEY`.
-7. `NEXT_PUBLIC_GOOGLE_PLACE_ID` requires the business to be indexed in the Places API — as of this build, "Shiva Luxury" was not yet findable via Places API text/nearby search under any query tried (name, address, phone number). Once Google indexes the listing (this can take time for newer or low-search-volume profiles), search `https://places.googleapis.com/v1/places:searchText` for the business name to retrieve its `place_id` and add it here.
+7. `NEXT_PUBLIC_GOOGLE_PLACE_ID` is `ChIJJWA5sSQ0eycREcmeuqzYC7A` — verified by matching the listing's phone number, name, and CID against `google.com/maps/place/Shiva+Luxury`. Google's Places API only returns up to 5 individual review texts per place regardless of the total review count (a platform-wide limit, not something this app can change) — with the key and Place ID both set, the trust section will show the real 5.0 / 9-review aggregate plus up to 5 real review cards, with the remainder as placeholders.
 
 ## Adding environment variables in Vercel
 
@@ -82,6 +82,6 @@ npx vercel --prod
 
 ## Known placeholders to replace before/soon after launch
 
-- 8 of 9 Google review cards show placeholder text — the 5.0/9-review aggregate is real and verified, but Google has not yet indexed this business in the Places API, so individual review text cannot be pulled live yet (see the Places API section above). Configure `NEXT_PUBLIC_GOOGLE_PLACES_API_KEY` + `NEXT_PUBLIC_GOOGLE_PLACE_ID` once the listing is indexed.
+- With `NEXT_PUBLIC_GOOGLE_PLACES_API_KEY` + `NEXT_PUBLIC_GOOGLE_PLACE_ID` (`ChIJJWA5sSQ0eycREcmeuqzYC7A`) set, up to 5 real review cards show live; the remaining cards (up to 9 total) fall back to placeholder text since Google's API caps individual review text at 5 per place regardless of total review count.
 - Press strip has 1 confirmed placement (Voyage LA) and 5 open/placeholder slots (including Bold Journey, link TBD) — fill in as features run.
 - "Current Listings" section links to a contact form rather than showing live inventory — connect an IDX/MLS feed if live listing search is needed later.

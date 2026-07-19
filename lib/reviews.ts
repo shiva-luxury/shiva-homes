@@ -36,19 +36,26 @@ export async function fetchLiveReviews(): Promise<PlacesReviewResult | null> {
   if (!apiKey || !placeId) return null
 
   try {
-    const res = await fetch(
-      `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&fields=rating,user_ratings_total,reviews&key=${apiKey}`
-    )
+    // Places API (New) — the key in this project is only authorized for the New API,
+    // not the legacy `place/details/json` endpoint, so this uses header-based auth
+    // and returns up to 5 reviews (Google's platform limit for both old and new API).
+    const res = await fetch(`https://places.googleapis.com/v1/places/${placeId}`, {
+      headers: {
+        'X-Goog-Api-Key': apiKey,
+        'X-Goog-FieldMask': 'rating,userRatingCount,reviews',
+      },
+    })
+    if (!res.ok) return null
     const data = await res.json()
-    if (data.status !== 'OK') return null
+    if (!data.rating) return null
     return {
-      rating: data.result.rating,
-      reviewCount: data.result.user_ratings_total,
-      reviews: (data.result.reviews || []).map((r: any) => ({
-        authorName: r.author_name,
+      rating: data.rating,
+      reviewCount: data.userRatingCount,
+      reviews: (data.reviews || []).map((r: any) => ({
+        authorName: r.authorAttribution?.displayName || 'Google User',
         rating: r.rating,
-        text: r.text,
-        relativeTime: r.relative_time_description,
+        text: r.text?.text || r.originalText?.text || '',
+        relativeTime: r.relativePublishTimeDescription || 'Verified Google review',
       })),
     }
   } catch {
