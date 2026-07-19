@@ -37,11 +37,11 @@ export default function Header() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2">
+          <a href="https://shivaluxury.com" className="flex items-center gap-2">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={PORTRAIT_PHOTO_URL} alt="Shiva Luxury" className="w-9 h-9 rounded-full object-cover border border-gold" />
             <span className="font-serif text-white text-lg tracking-wide hidden sm:inline">Shiva Luxury</span>
-          </Link>
+          </a>
 
           <nav className="hidden lg:flex items-center gap-6">
             {NAV.map((item) => (

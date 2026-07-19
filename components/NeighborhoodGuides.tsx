@@ -15,8 +15,8 @@ export default function NeighborhoodGuides() {
               <UnsplashPhoto img={NEIGHBORHOOD_IMAGES[n.slug]} w={600} h={450} aspect="aspect-[4/3]" className="rounded-none rounded-t-xl" />
               <div className="p-4">
                 <p className="font-serif text-lg text-navy">{n.name}</p>
-                <p className="text-xs text-gold-dark font-semibold mb-2">Median {n.medianPrice}</p>
-                <p className="text-xs text-[var(--text-secondary)] mb-3 leading-relaxed">{n.lifestyle}</p>
+                <p className="text-xs text-gold-dark font-semibold mb-2">Median {n.market.medianPrice}</p>
+                <p className="text-xs text-[var(--text-secondary)] mb-3 leading-relaxed">{n.tagline}</p>
                 <Link href={`/neighborhoods/${n.slug}`}>
                   <Button variant="ghost" className="!px-0 text-navy underline underline-offset-4 text-xs">Learn More →</Button>
                 </Link>

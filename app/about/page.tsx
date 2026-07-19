@@ -5,7 +5,7 @@ import { BRAND, BROKERAGE, DRE, PHONE, EMAIL } from '../../lib/constants'
 import { PORTRAIT_PHOTO_URL } from '../../lib/images'
 
 const ABOUT_TITLE = `About ${BRAND}`
-const ABOUT_DESCRIPTION = `Meet ${BRAND}, Principal Advisor with ${BROKERAGE}, ${DRE}, serving Los Angeles buyers, sellers, and renters.`
+const ABOUT_DESCRIPTION = `Meet ${BRAND}, ${DRE}, serving Los Angeles buyers, sellers, and renters.`
 
 export const metadata: Metadata = {
   title: ABOUT_TITLE,
@@ -31,7 +31,7 @@ export default function AboutPage() {
 
         <div className="space-y-5 text-[15px] leading-relaxed text-[var(--text-secondary)]">
           <p>
-            As a Principal Advisor with {BROKERAGE}, {BRAND} provides a sophisticated, design-forward approach to the Los Angeles real estate market. With a background in art and design, the team identifies the aesthetic potential and long-term value in a property that others often overlook, pairing that eye with sharp, data-driven market strategy.
+            {BRAND} provides a sophisticated, design-forward approach to the Los Angeles real estate market. With a background in art and design, the team identifies the aesthetic potential and long-term value in a property that others often overlook, pairing that eye with sharp, data-driven market strategy.
           </p>
           <p>
             Multilingual and client-first, {BRAND} offers a bespoke experience tailored to buyers, sellers, and renters across Los Angeles's most sought-after neighborhoods — from Encino and Sherman Oaks to Malibu, Venice, Santa Monica, Beverly Hills, Calabasas, and Woodland Hills — ensuring every transaction is as strategically sound as it is well cared for.

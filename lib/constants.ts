@@ -10,17 +10,15 @@ export const BRAND = 'Shiva Luxury'
 export const TAGLINE = 'Engineering the Path to Exceptional Living.'
 export const SITE_URL = `https://${DOMAIN}`
 
-/** The internal content/lead-engine tool — blog posts link out to its Repurpose tab. */
-export const CONTENT_ENGINE_URL = 'https://start.shivaluxury.com'
-
 export const SOCIAL = {
   instagram: 'https://www.instagram.com/shiva.luxury',
   instagramHandle: '@shiva.luxury',
-  youtube: 'https://www.youtube.com/@shivaluxury',
-  youtubeHandle: 'shivaluxury',
+  youtube: 'https://www.youtube.com/@ShivaLuxuryHomes',
+  youtubeHandle: 'ShivaLuxuryHomes',
   tiktok: 'https://www.tiktok.com/@shiva.luxury',
   tiktokHandle: '@shiva.luxury',
-  facebook: 'https://www.facebook.com/profile.php?id=61576367853932',
+  facebook: 'https://www.facebook.com/luxuryshiva',
+  linkedin: 'https://www.linkedin.com/in/shivaluxury',
 }
 
 export const GOOGLE_BUSINESS = {

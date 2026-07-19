@@ -33,6 +33,7 @@ export default function Footer() {
             <li><a href={SOCIAL.youtube} target="_blank" rel="noopener noreferrer" className="hover:text-gold-light">YouTube {SOCIAL.youtubeHandle}</a></li>
             <li><a href={SOCIAL.tiktok} target="_blank" rel="noopener noreferrer" className="hover:text-gold-light">TikTok {SOCIAL.tiktokHandle}</a></li>
             <li><a href={SOCIAL.facebook} target="_blank" rel="noopener noreferrer" className="hover:text-gold-light">Facebook</a></li>
+            <li><a href={SOCIAL.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-gold-light">LinkedIn</a></li>
           </ul>
         </div>
 
