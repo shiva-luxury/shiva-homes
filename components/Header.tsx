@@ -13,7 +13,6 @@ const NAV = [
   { label: 'Neighborhoods', href: '/#neighborhoods' },
   { label: 'Blog', href: '/blog' },
   { label: 'Newsletter', href: '/newsletter' },
-  { label: 'Watch', href: '/#watch' },
   { label: 'About', href: '/#about' },
   { label: 'Contact', href: '/#buy' },
 ]

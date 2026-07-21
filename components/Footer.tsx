@@ -22,7 +22,6 @@ export default function Footer() {
             <li><Link href="/#neighborhoods" className="hover:text-gold-light">Neighborhoods</Link></li>
             <li><Link href="/blog" className="hover:text-gold-light">Blog</Link></li>
             <li><Link href="/newsletter" className="hover:text-gold-light">Newsletter</Link></li>
-            <li><Link href="/#watch" className="hover:text-gold-light">Watch</Link></li>
           </ul>
         </div>
 

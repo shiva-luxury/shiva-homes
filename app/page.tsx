@@ -3,7 +3,6 @@ import MarketStatsBar from '../components/MarketStatsBar'
 import FeaturedProperties from '../components/FeaturedProperties'
 import NeighborhoodGuides from '../components/NeighborhoodGuides'
 import BlogSection from '../components/BlogSection'
-import YouTubeSection from '../components/YouTubeSection'
 import GoogleReviews from '../components/GoogleReviews'
 import PressStrip from '../components/PressStrip'
 import AboutSection from '../components/AboutSection'
@@ -35,7 +34,6 @@ export default function HomePage() {
       <FeaturedProperties />
       <div id="neighborhoods"><NeighborhoodGuides /></div>
       <BlogSection />
-      <YouTubeSection />
       <GoogleReviews />
       <PressStrip />
       <AboutSection />
