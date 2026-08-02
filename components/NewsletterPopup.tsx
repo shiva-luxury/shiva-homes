@@ -13,6 +13,7 @@ export default function NewsletterPopup() {
   const [visible, setVisible] = useState(false)
   const [dismissed, setDismissed] = useState(false)
   const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
   const [submitting, setSubmitting] = useState(false)
   const [success, setSuccess] = useState(false)
@@ -35,10 +36,10 @@ export default function NewsletterPopup() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!firstName.trim() || !email.trim()) return
+    if (!firstName.trim() || !lastName.trim() || !email.trim()) return
     setSubmitting(true)
     try {
-      await submitLead('Market Update Signup', { firstName, email })
+      await submitLead('Market Update Signup', { firstName, lastName, email })
       setSuccess(true)
     } finally {
       setSubmitting(false)
@@ -64,6 +65,7 @@ export default function NewsletterPopup() {
             </p>
             <div className="flex flex-col gap-2 mb-2">
               <Input placeholder="First Name" value={firstName} onChange={(e) => setFirstName(e.target.value)} required />
+              <Input placeholder="Last Name" value={lastName} onChange={(e) => setLastName(e.target.value)} required />
               <Input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
             </div>
             <p className="text-[10px] text-[var(--text-muted)] mb-4 leading-snug">{TCPA_CONSENT(BRAND)}</p>
